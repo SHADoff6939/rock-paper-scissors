@@ -7,11 +7,11 @@ def menu():
         print(i)
     menu_ch = ''
     #retrying to ask user input
-    while menu_ch not in range(1, len(menu_op)+1):
+    while menu_ch not in range(1, len(menu_op) + 1):
         try:
-            menu_ch = int(input())
+            menu_ch = int(input('Choose the option: '))
         except ValueError:
-            print('please type a numbeof the choice')
+            print('please type a number of the choice')
     return menu_ch
 
 
@@ -27,7 +27,6 @@ def game():
     if (p1 == 'rock' and p2 == 'scissors') or (p1 == 'paper' and p2 == 'rock') or (p1 == 'scissors' and p2 == 'paper'):
         return True
     elif p1 == p2:
-        print("It's a draw!")
         return None  # No winner in case of a draw
     else:
         return False
@@ -36,13 +35,15 @@ def game():
 if __name__ == '__main__':
     choice = menu()
     if choice == 1:
-        result = game()
-        if result is None:
-            print("It's a draw!")
-        elif result:
-            print('You win!')
-        else:
-            print("You lose!")
+        while ext := '' != 'exit':
+            result = game()
+            if result is None:
+                print("It's a draw!")
+            elif result:
+                print('You win!')
+            else:
+                print("You lose!")
+            ext = input('Play again or exit?')
     elif choice == 2:
         print("Exiting the game.")
         exit()
